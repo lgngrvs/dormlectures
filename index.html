@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stanford Dorm Lectures</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Work+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: #f5f3ed;
+            color: #2a2a2a;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Header */
+        header {
+            background: #f5f3ed;
+            color: #2a2a2a;
+            padding: 100px 0 40px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background: linear-gradient(to right, #d64545 0%, #c95fb3 15%, #4a7ba7 30%, #5ba883 45%, #d9a834 60%, #d64545 75%, #7b68b5 90%, #4a7ba7 100%);
+        }
+
+        h1 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 5em;
+            font-weight: 700;
+            letter-spacing: -2px;
+            margin-bottom: 10px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 40px 0 80px;
+            background: #f5f3ed;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 0.9em;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #d64545;
+            margin-bottom: 20px;
+            display: inline-block;
+            padding: 8px 20px;
+            background: white;
+            border: 2px solid #2a2a2a;
+        }
+
+        .about p {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.3em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .time-place {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-top: 30px;
+            color: #5ba883;
+        }
+
+        /* Schedule Section */
+        .schedule {
+            padding: 80px 0;
+            background: #4a7ba7;
+            color: #f5f3ed;
+        }
+
+        .schedule .section-label {
+            background: #d9a834;
+            color: #2a2a2a;
+            border: none;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .week-card {
+            background: #f5f3ed;
+            color: #2a2a2a;
+            padding: 30px;
+            border: 3px solid #2a2a2a;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        /* Varied accent colors for week cards */
+        .week-card:nth-child(1)::before { border-color: #d64545; }
+        .week-card:nth-child(2)::before { border-color: #c95fb3; }
+        .week-card:nth-child(3)::before { border-color: #7b68b5; }
+        .week-card:nth-child(4)::before { border-color: #5ba883; }
+        .week-card:nth-child(5)::before { border-color: #d9a834; }
+        .week-card:nth-child(6)::before { border-color: #d64545; }
+        .week-card:nth-child(7)::before { border-color: #c95fb3; }
+        .week-card:nth-child(8)::before { border-color: #7b68b5; }
+        .week-card:nth-child(9)::before { border-color: #5ba883; }
+        .week-card:nth-child(10)::before { border-color: #d9a834; }
+
+        .week-card::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: 10px;
+            bottom: 10px;
+            border: 3px solid #d64545;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Past lecture styling */
+        .week-card.past {
+            filter: grayscale(60%) brightness(1.1);
+            opacity: 0.85;
+        }
+
+        .week-number {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 0.8em;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #d64545;
+            margin-bottom: 10px;
+        }
+
+        /* Varied colors for week numbers */
+        .week-card:nth-child(1) .week-number { color: #d64545; }
+        .week-card:nth-child(2) .week-number { color: #c95fb3; }
+        .week-card:nth-child(3) .week-number { color: #7b68b5; }
+        .week-card:nth-child(4) .week-number { color: #5ba883; }
+        .week-card:nth-child(5) .week-number { color: #d9a834; }
+        .week-card:nth-child(6) .week-number { color: #d64545; }
+        .week-card:nth-child(7) .week-number { color: #c95fb3; }
+        .week-card:nth-child(8) .week-number { color: #7b68b5; }
+        .week-card:nth-child(9) .week-number { color: #5ba883; }
+        .week-card:nth-child(10) .week-number { color: #d9a834; }
+
+        .week-theme {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .speakers {
+            margin-top: 15px;
+        }
+
+        .speaker {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 0.95em;
+            margin: 8px 0;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .speaker::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #4a7ba7;
+            font-weight: 600;
+        }
+
+        /* Varied arrow colors to match card theme */
+        .week-card:nth-child(1) .speaker::before { color: #d64545; }
+        .week-card:nth-child(2) .speaker::before { color: #c95fb3; }
+        .week-card:nth-child(3) .speaker::before { color: #7b68b5; }
+        .week-card:nth-child(4) .speaker::before { color: #5ba883; }
+        .week-card:nth-child(5) .speaker::before { color: #d9a834; }
+        .week-card:nth-child(6) .speaker::before { color: #d64545; }
+        .week-card:nth-child(7) .speaker::before { color: #c95fb3; }
+        .week-card:nth-child(8) .speaker::before { color: #7b68b5; }
+        .week-card:nth-child(9) .speaker::before { color: #5ba883; }
+        .week-card:nth-child(10) .speaker::before { color: #d9a834; }
+
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+            background: #f5f3ed;
+        }
+
+        .faq .section-label {
+            background: #7b68b5;
+            color: #f5f3ed;
+            border: none;
+        }
+
+        .faq-content {
+            max-width: 800px;
+            margin: 40px auto 0;
+        }
+
+        .faq-item {
+            margin-bottom: 40px;
+            border-left: 4px solid #d9a834;
+            padding-left: 25px;
+        }
+
+        /* Varied border colors for FAQ items */
+        .faq-item:nth-child(1) { border-left-color: #d64545; }
+        .faq-item:nth-child(2) { border-left-color: #5ba883; }
+        .faq-item:nth-child(3) { border-left-color: #c95fb3; }
+        .faq-item:nth-child(4) { border-left-color: #7b68b5; }
+        .faq-item:nth-child(5) { border-left-color: #d9a834; }
+
+        .faq-question {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2a2a2a;
+        }
+
+        .faq-answer {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.05em;
+            line-height: 1.7;
+        }
+
+        .faq-answer ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .faq-answer li {
+            margin: 8px 0;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 80px 0;
+            background: #c95fb3;
+            overflow: hidden;
+        }
+
+        .gallery .section-label {
+            background: #f5f3ed;
+            color: #2a2a2a;
+            border: 2px solid #2a2a2a;
+        }
+
+        .gallery-scroll {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 40px 0;
+            margin: 0 -40px;
+            padding-left: 40px;
+            padding-right: 40px;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .gallery-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .gallery-scroll::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.1);
+        }
+
+        .gallery-scroll::-webkit-scrollbar-thumb {
+            background: #2a2a2a;
+        }
+
+        .gallery-scroll-img{
+            width: 100%;
+        }
+
+        .gallery-item {
+            flex: 0 0 400px;
+            height: 300px;
+            background: #f5f3ed;
+            border: 4px solid #2a2a2a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Work Sans', sans-serif;
+            font-size: 0.9em;
+            color: #888;
+            position: relative;
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: -10px;
+            bottom: -10px;
+            border: 4px solid #d9a834;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Varied accent colors for gallery items */
+        .gallery-item:nth-child(1)::after { border-color: #d9a834; }
+        .gallery-item:nth-child(2)::after { border-color: #5ba883; }
+        .gallery-item:nth-child(3)::after { border-color: #7b68b5; }
+        .gallery-item:nth-child(4)::after { border-color: #d64545; }
+        .gallery-item:nth-child(5)::after { border-color: #4a7ba7; }
+        .gallery-item:nth-child(6)::after { border-color: #c95fb3; }
+        .gallery-item:nth-child(7)::after { border-color: #d9a834; }
+        .gallery-item:nth-child(8)::after { border-color: #5ba883; }
+
+        /* Footer */
+        footer {
+            background: #2a2a2a;
+            color: #f5f3ed;
+            padding: 40px 0;
+            text-align: center;
+            font-family: 'Work Sans', sans-serif;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: #d9a834;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+
+            .subtitle {
+                font-size: 0.9em;
+                letter-spacing: 2px;
+            }
+
+            .schedule-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-scroll {
+                margin: 0 -20px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .gallery-item {
+                flex: 0 0 300px;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Dorm Lectures</h1>
+            <h2>at Stanford</h2>
+        </div>
+    </header>
+
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="section-label">About</div>
+                <p>
+                    Dorm Lectures is a place for ideas we don't otherwise have a space to consider. Each Sunday night we bring two students to a dorm on campus to talk for 15 minutes about an idea they care about. 
+                
+                    <p> We believe that when the only context we have for engaging with ideas is a formal, strict, academic one – where we think for assignments and write for grades – we've lost the life of the mind. We're therefore interested in ideas at their most alive: ideas before they've been pinned down and bound into a rigid form, when they're still unpredictable, even dangerous. We encourage lectures that are experimental and theses that are unpolished. Above all, Dorm Lectures is a place to think together.
+                    </p>
+
+                    <p>
+                        Over the course of more than 50 lectures, we've had the pleasure of hearing about an incredible diversity of topics, among them lost classics, chip fabrication, philosophy of science, biomimicry, Stanford's architecture, constitutional law, AI explainability, and sufi mysticism. And we look forward to hearing yours :)
+                    </p>
+
+                    <i>- LG, AG, and PB <br> November 2025</i>
+            </div>
+        </div>
+    </section>
+
+    <section class="schedule">
+        <div class="container">
+            <div class="section-label">Fall Quarter 2025</div>
+
+            <h3> <i>All lectures are at 8pm in Faizan Lounge, East Flo, unless otherwise noted.</i></h3>
+            <div class="schedule-grid">
+                <div class="week-card past">
+                    <div class="week-number">Week 1</div>
+                    <div class="week-theme">Unexpected Places</div>
+                    <div class="speakers">
+                        <div class="speaker"><strong>Daniel Kiss</strong> on finding labs at Stanford</div>
+                        <div class="speaker"><strong>Anna Shilling</strong> on finding Jesus in Japan</div>
+                    </div>
+                </div>
+
+                <div class="week-card past">
+                    <div class="week-number">Week 2</div>
+                    <div class="week-theme">Models</div>
+                    <div class="speakers">
+                        <div class="speaker"><strong>Emmanuel Zheng</strong> on mapping the earth's crust</div>
+                        <div class="speaker"><strong>Logan Graves</strong> on platonic forms in AI</div>
+                    </div>
+                </div>
+
+                <div class="week-card past">
+                    <div class="week-number">Week 3</div>
+                    <div class="week-theme">Stories</div>
+                    <div class="speakers">
+                        <div class="speaker"><strong>Nate Adam</strong> on Norse mythology</div>
+                        <div class="speaker"><strong>Carole Darve</strong> on writing books</div>
+                    </div>
+                </div>
+
+                <div class="week-card past">
+                    <div class="week-number">Week 4</div>
+                    <div class="week-theme">Survival</div>
+                    <div class="speakers">
+                        <div class="speaker"><strong>Trinity Rushing</strong> on personhood in Parfit</div>
+                        <div class="speaker"><strong>Jacob Cohen</strong> on superintelligence</div>
+                    </div>
+                </div>
+
+                <div class="week-card past">
+                    <div class="week-number">Week 5</div>
+                    <div class="week-theme">Discourse</div>
+                    <div class="speakers">
+                        <div class="speaker"><strong>Sabine Mazzeo</strong> on women in ancient greek literature </div>
+                        <div class="speaker"><strong>Ben Klieger</strong> on improvisation and rhetoric</div>
+                    </div>
+                </div>
+
+                <div class="week-card">
+                    <div class="week-number">Week 6</div>
+                    <div class="week-theme">The Human Condition</div>
+                    <div class="speakers">
+                        <div class="speaker"><strong>Peter Bennett</strong> on terror</div>
+                        <div class="speaker"><strong>Samin Bhan</strong> on pickleball</div>
+                    </div>
+                </div>
+
+                <div class="week-card">
+                    <div class="week-number">Week 7</div>
+                    <div class="week-theme">God</div>
+                    <div class="speakers">
+                        <div class="speaker">Lecturers TBA</div>
+                    </div>
+                </div>
+
+                <div class="week-card">
+                    <div class="week-number">Week 8</div>
+                    <div class="week-theme">The Erotic</div>
+                    <div class="speakers">
+                        <div class="speaker">Lecturers TBA</div>
+                    </div>
+                </div>
+
+                <div class="week-card">
+                    <div class="week-number">Week 9</div>
+                    <div class="week-theme">Machines</div>
+                    <div class="speakers">
+                        <div class="speaker">Lecturers TBA</div>
+                    </div>
+                </div>
+
+                <div class="week-card">
+                    <div class="week-number">Week 10</div>
+                    <div class="week-theme">The Apocalypse</div>
+                    <div class="speakers">
+                        <div class="speaker">Lecturers TBA</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <div class="section-label">FAQ</div>
+            <div class="faq-content">
+
+                <div class="faq-item">
+                    <div class="faq-question">What makes a good Dorm Lecture?</div>
+                    <div class="faq-answer">
+                        A successful Dorm Lecture is one that the audience can keep talking about once the speaker leaves the room. We don't impose any disciplinary boundaries, since they're all artificial anyway; essays, yes, but equations, even <i>machines</i> that we build ask questions of us, so we do not separate the engineer from the philosopher. With that said, great dorm lectures tend to have the following in common:
+                        <ul>
+                            <li><b>Have a meaningful question at the heart.</b> Great dorm lectures orient their 15 minutes (+ 5 minutes for questions afterwards) towards a difficult question, and offer the audience tools to consider it. Even the purest technical problems often have philosophical interpretation.</li>
+                            <li><b>Begin from a place of great interest.</b> Passion tends to lead to more curiosity, and comes through when speaking. We will always prefer what <i>you</i> want to talk about over what you think <i>we</i> want you to talk about.</li>
+                            <li><b>Interact with the audience.</b> Asking the audience for guesses, probing their intuitions, and giving them a chance to make discoveries puts them in a better position to think about the ideas when you're not in the room.</li>
+                            
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">How do I lecture?</div>
+                    <div class="faq-answer">
+                        Come to Dorm Lectures any Sunday night and tell us (Peter, Ailon, or Logan) in person. You can also email us; our emails are at the bottom of this page. To sign up, you don't need to have a finalized topic, but please indicate which week's <i>theme</i> you'd like to lecture for.
+                    </div>
+                </div>
+
+
+                <div class="faq-item">
+                    <div class="faq-question">Who can give a lecture?</div>
+                    <div class="faq-answer">
+                        Anyone who wants to, though we limit to 1 per quarter per person to ensure we have space for everyone who wants to lecture. We welcome you to sign up before you know what your lecture will be about.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What should I lecture about?</div>
+                    <div class="faq-answer">
+                        This one we can't answer for you. But here are some prompts:
+
+                        <ul>
+                            <li>You have interests. <b>Where did they begin?</b> (e.g. "this genetics paper/talk I saw was so interesting I had to learn more" or "this physics concept I learned in class challenged my understanding of the world, and so I decided to take more classes in it" or "I read this essay from this philosopher and it convinced me that this philosophical problem is deep and important, and here's how people have tried to engage with it") </li>
+                            <li><b>What concepts keep coming up in your conversations?</b> Which ones do you love telling people about?</li>
+                            <li><b>What would you focus on if you had space to think about whatever you wanted?</b></li>
+                            <li><b>Interesting ideas/models/theorems/theories from your field(s) of interest</b></li>
+                            <li><b>Your interpretation or review of a text that's important to you</b></li>
+                            <li><b>What concepts provide scaffolding to how you think about the world, day-to-day?</b> (e.g. "this concept from linear algebra is a helpful metaphor for me think about the world" or "this idea in machine learning gave me a helpful vocabulary for talking about humans as agents" or "this idea in education theory has helped me think about the way I talk to other people")</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">What if I don't want to lecture?</div>
+                    <div class="faq-answer">
+                        You can still be an important part of dorm lectures! Every good lecture needs a good audience. There's no pressure to lecture, though we anticipate that you may feel differently once you've come to a couple events. :)
+                    </div>
+                </div>
+
+
+                <div class="faq-item">
+                    <div class="faq-question">How long are lectures?</div>
+                    <div class="faq-answer">
+                        Each lecture gets 15 minutes, plus 5 minutes for Q&A. (This tends to leave the audience wanting more, so while all are welcome to leave after the two lectures are over, we tend to stick around for a while after the event is over to continue the conversation informally.)
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Is there food?</div>
+                    <div class="faq-answer">
+                        Dorm Lectures is in Faisan at the moment, and directly follows FloMo's famous Sunday Indian food dinner. Thus we don't provide dinner since there is plenty in the dining hall 30 feet away.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery">
+        <div class="container">
+            <div class="section-label">Previous Lectures</div>
+        </div>
+        <div class="gallery-scroll">
+            <div class="gallery-item"><img class="gallery-scroll-img" src="assets/shriram.png"></div>
+            <div class="gallery-item"><img class="gallery-scroll-img" src="assets/branner.png"></div>
+            <div class="gallery-item"><img class="gallery-scroll-img" src="assets/donner.png"></div>
+            <div class="gallery-item"><img class="gallery-scroll-img" src="assets/soto.png"></div>
+            <div class="gallery-item"><img class="gallery-scroll-img" src="assets/sabineshouse.png"></div>
+            <div class="gallery-item"><img class="gallery-scroll-img"  src="assets/castano.jpg"></div>
+            <div class="gallery-item"><img class="gallery-scroll-img"  src="assets/evgr.png"></div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Stanford Dorm Lectures · Fall 2025</p>
+            <p>Contact at any of <a href="mailto:ailon@stanford.edu">ailon@stanford.edu</a>, <a href="mailto:pbenn@stanford.edu">pbenn@stanford.edu</a>, <a href="mailto:gravesl@stanford.edu">gravesl@stanford.edu</a></p>
+        </div>
+    </footer>
+</body>
+</html>
