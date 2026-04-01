@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stanford Dorm Lectures</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Work+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,247 +14,207 @@
         }
 
         body {
-            font-family: 'Work Sans', sans-serif;
-            background: #f5f3ed;
-            color: #2a2a2a;
+            font-family: 'EB Garamond', serif;
+            background: #fff;
+            color: #111;
             line-height: 1.6;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 860px;
             margin: 0 auto;
             padding: 0 40px;
         }
 
         /* Header */
         header {
-            background: #f5f3ed;
-            color: #2a2a2a;
-            padding: 100px 0 40px;
-            position: relative;
-            overflow: hidden;
+            background: #fff;
+            color: #111;
+            padding: 80px 0 20px;
             text-align: center;
         }
 
-        header::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 12px;
-            background: linear-gradient(to right, #d64545 0%, #c95fb3 15%, #4a7ba7 30%, #5ba883 45%, #d9a834 60%, #d64545 75%, #7b68b5 90%, #4a7ba7 100%);
+        h1 {
+            font-family: 'UnifrakturMaguntia', cursive;
+            font-size: 5.5em;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            line-height: 1;
         }
 
-        h1 {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 5em;
-            font-weight: 700;
-            letter-spacing: -2px;
-            margin-bottom: 10px;
+        header h2 {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.1em;
+            font-weight: 400;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 0;
         }
 
         /* About Section */
         .about {
-            padding: 40px 0 80px;
-            background: #f5f3ed;
+            padding: 40px 0 60px;
+            background: #fff;
         }
 
         .about-content {
-            max-width: 800px;
+            max-width: 680px;
             margin: 0 auto;
         }
 
         .section-label {
-            font-family: 'Work Sans', sans-serif;
-            font-size: 0.9em;
-            font-weight: 800;
-            letter-spacing: 3px;
+            font-family: 'EB Garamond', serif;
+            font-size: 1em;
+            font-weight: 600;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            color: #d64545;
-            margin-bottom: 20px;
+            color: #8b1a1a;
+            margin-bottom: 24px;
             display: inline-block;
-            padding: 8px 20px;
-            background: white;
-            border: 2px solid #2a2a2a;
+            padding: 6px 0;
+            border-bottom: 2px solid #b8860b;
+        }
+
+        /* Drop cap */
+        .drop-cap::first-letter {
+            font-family: 'UnifrakturMaguntia', cursive;
+            float: left;
+            font-size: 4em;
+            line-height: 0.8;
+            padding-right: 10px;
+            padding-top: 4px;
+            color: #8b1a1a;
+        }
+
+        /* Ornamental dividers */
+        .divider {
+            text-align: center;
+            padding: 30px 0;
+            font-size: 1.5em;
+            color: #b8860b;
+            letter-spacing: 12px;
         }
 
         .about p {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 1.3em;
+            font-family: 'EB Garamond', serif;
+            font-size: 1.2em;
             line-height: 1.8;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .time-place {
-            font-family: 'Work Sans', sans-serif;
+            font-family: 'EB Garamond', serif;
             font-size: 1.1em;
             font-weight: 600;
             margin-top: 30px;
-            color: #5ba883;
         }
 
         /* Schedule Section */
         .schedule {
-            padding: 80px 0;
-            background: #4a7ba7;
-            color: #f5f3ed;
+            padding: 60px 0 80px;
+            background: #fff;
         }
 
         .schedule .section-label {
-            background: #d9a834;
-            color: #2a2a2a;
-            border: none;
+            border-bottom-color: #111;
         }
 
-        .schedule-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+        .schedule-header {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.3em;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 50px;
         }
 
-        .week-card {
-            background: #f5f3ed;
-            color: #2a2a2a;
-            padding: 30px;
-            border: 3px solid #2a2a2a;
-            position: relative;
-            transition: all 0.3s ease;
+        .schedule-list {
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        /* Varied accent colors for week cards */
-        .week-card:nth-child(1)::before { border-color: #d64545; }
-        .week-card:nth-child(2)::before { border-color: #c95fb3; }
-        .week-card:nth-child(3)::before { border-color: #7b68b5; }
-        .week-card:nth-child(4)::before { border-color: #5ba883; }
-        .week-card:nth-child(5)::before { border-color: #d9a834; }
-        .week-card:nth-child(6)::before { border-color: #d64545; }
-        .week-card:nth-child(7)::before { border-color: #c95fb3; }
-        .week-card:nth-child(8)::before { border-color: #7b68b5; }
-        .week-card:nth-child(9)::before { border-color: #5ba883; }
-        .week-card:nth-child(10)::before { border-color: #d9a834; }
+        .schedule-item {
+            display: flex;
+            align-items: baseline;
+            padding: 14px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
 
-        .week-card::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: 10px;
-            bottom: 10px;
-            border: 3px solid #d64545;
-            pointer-events: none;
-            z-index: -1;
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+
+        .schedule-date {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.3em;
+            min-width: 120px;
+            text-align: right;
+            padding-right: 30px;
+            color: #8b1a1a;
+        }
+
+        .schedule-theme {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.5em;
+            font-style: italic;
+            font-weight: 400;
+            color: #111;
+        }
+
+        .schedule-theme .on-call {
+            font-style: normal;
+            font-size: 0.65em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            vertical-align: middle;
+            margin-right: 6px;
+            opacity: 0.5;
         }
 
         /* Past lecture styling */
-        .week-card.past {
-            filter: grayscale(60%) brightness(1.1);
-            opacity: 0.85;
+        .schedule-item.past {
+            opacity: 0.4;
         }
 
-        .week-number {
-            font-family: 'Work Sans', sans-serif;
-            font-size: 0.8em;
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #d64545;
-            margin-bottom: 10px;
+        .schedule-note {
+            max-width: 600px;
+            margin: 50px auto 0;
+            text-align: center;
+            font-family: 'EB Garamond', serif;
+            font-size: 1.05em;
+            line-height: 1.7;
+            color: #555;
         }
-
-        /* Varied colors for week numbers */
-        .week-card:nth-child(1) .week-number { color: #d64545; }
-        .week-card:nth-child(2) .week-number { color: #c95fb3; }
-        .week-card:nth-child(3) .week-number { color: #7b68b5; }
-        .week-card:nth-child(4) .week-number { color: #5ba883; }
-        .week-card:nth-child(5) .week-number { color: #d9a834; }
-        .week-card:nth-child(6) .week-number { color: #d64545; }
-        .week-card:nth-child(7) .week-number { color: #c95fb3; }
-        .week-card:nth-child(8) .week-number { color: #7b68b5; }
-        .week-card:nth-child(9) .week-number { color: #5ba883; }
-        .week-card:nth-child(10) .week-number { color: #d9a834; }
-
-        .week-theme {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 1.8em;
-            font-weight: 700;
-            margin-bottom: 15px;
-            line-height: 1.2;
-        }
-
-        .speakers {
-            margin-top: 15px;
-        }
-
-        .speaker {
-            font-family: 'Work Sans', sans-serif;
-            font-size: 0.95em;
-            margin: 8px 0;
-            padding-left: 15px;
-            position: relative;
-        }
-
-        .speaker::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: #4a7ba7;
-            font-weight: 600;
-        }
-
-        /* Varied arrow colors to match card theme */
-        .week-card:nth-child(1) .speaker::before { color: #d64545; }
-        .week-card:nth-child(2) .speaker::before { color: #c95fb3; }
-        .week-card:nth-child(3) .speaker::before { color: #7b68b5; }
-        .week-card:nth-child(4) .speaker::before { color: #5ba883; }
-        .week-card:nth-child(5) .speaker::before { color: #d9a834; }
-        .week-card:nth-child(6) .speaker::before { color: #d64545; }
-        .week-card:nth-child(7) .speaker::before { color: #c95fb3; }
-        .week-card:nth-child(8) .speaker::before { color: #7b68b5; }
-        .week-card:nth-child(9) .speaker::before { color: #5ba883; }
-        .week-card:nth-child(10) .speaker::before { color: #d9a834; }
 
         /* FAQ Section */
         .faq {
-            padding: 80px 0;
-            background: #f5f3ed;
-        }
-
-        .faq .section-label {
-            background: #7b68b5;
-            color: #f5f3ed;
-            border: none;
+            padding: 60px 0;
+            background: #fff;
         }
 
         .faq-content {
-            max-width: 800px;
-            margin: 40px auto 0;
+            max-width: 680px;
+            margin: 30px auto 0;
         }
 
         .faq-item {
-            margin-bottom: 40px;
-            border-left: 4px solid #d9a834;
-            padding-left: 25px;
+            margin-bottom: 36px;
+            border-left: 2px solid #8b1a1a;
+            padding-left: 24px;
         }
 
-        /* Varied border colors for FAQ items */
-        .faq-item:nth-child(1) { border-left-color: #d64545; }
-        .faq-item:nth-child(2) { border-left-color: #5ba883; }
-        .faq-item:nth-child(3) { border-left-color: #c95fb3; }
-        .faq-item:nth-child(4) { border-left-color: #7b68b5; }
-        .faq-item:nth-child(5) { border-left-color: #d9a834; }
-
         .faq-question {
-            font-family: 'Work Sans', sans-serif;
+            font-family: 'EB Garamond', serif;
             font-size: 1.2em;
             font-weight: 600;
-            margin-bottom: 15px;
-            color: #2a2a2a;
+            margin-bottom: 12px;
+            color: #111;
         }
 
         .faq-answer {
-            font-family: 'Libre Baskerville', serif;
+            font-family: 'EB Garamond', serif;
             font-size: 1.05em;
             line-height: 1.7;
         }
@@ -270,22 +230,20 @@
 
         /* Gallery Section */
         .gallery {
-            padding: 80px 0;
-            background: #c95fb3;
+            padding: 60px 0;
+            background: #f8f8f6;
             overflow: hidden;
         }
 
         .gallery .section-label {
-            background: #f5f3ed;
-            color: #2a2a2a;
-            border: 2px solid #2a2a2a;
+            border-bottom-color: #111;
         }
 
         .gallery-scroll {
             display: flex;
             gap: 20px;
             overflow-x: auto;
-            padding: 40px 0;
+            padding: 30px 0;
             margin: 0 -40px;
             padding-left: 40px;
             padding-right: 40px;
@@ -294,74 +252,56 @@
         }
 
         .gallery-scroll::-webkit-scrollbar {
-            height: 8px;
+            height: 6px;
         }
 
         .gallery-scroll::-webkit-scrollbar-track {
-            background: rgba(0,0,0,0.1);
+            background: #e0e0e0;
         }
 
         .gallery-scroll::-webkit-scrollbar-thumb {
-            background: #2a2a2a;
+            background: #111;
         }
 
-        .gallery-scroll-img{
+        .gallery-scroll-img {
             width: 100%;
         }
 
         .gallery-item {
             flex: 0 0 400px;
             height: 300px;
-            background: #f5f3ed;
-            border: 4px solid #2a2a2a;
+            background: #fff;
+            border: 2px solid #111;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Work Sans', sans-serif;
+            font-family: 'EB Garamond', serif;
             font-size: 0.9em;
             color: #888;
             position: relative;
         }
 
-        .gallery-item::after {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            right: -10px;
-            bottom: -10px;
-            border: 4px solid #d9a834;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        /* Varied accent colors for gallery items */
-        .gallery-item:nth-child(1)::after { border-color: #d9a834; }
-        .gallery-item:nth-child(2)::after { border-color: #5ba883; }
-        .gallery-item:nth-child(3)::after { border-color: #7b68b5; }
-        .gallery-item:nth-child(4)::after { border-color: #d64545; }
-        .gallery-item:nth-child(5)::after { border-color: #4a7ba7; }
-        .gallery-item:nth-child(6)::after { border-color: #c95fb3; }
-        .gallery-item:nth-child(7)::after { border-color: #d9a834; }
-        .gallery-item:nth-child(8)::after { border-color: #5ba883; }
-
         /* Footer */
         footer {
-            background: #2a2a2a;
-            color: #f5f3ed;
+            background: #111;
+            color: #eee;
             padding: 40px 0;
             text-align: center;
-            font-family: 'Work Sans', sans-serif;
-            font-size: 0.9em;
+            font-family: 'EB Garamond', serif;
+            font-size: 0.95em;
         }
 
         footer a {
-            color: #d9a834;
+            color: #d4a843;
             text-decoration: none;
         }
 
         footer a:hover {
             text-decoration: underline;
+        }
+
+        a {
+            color: #b8860b;
         }
 
         /* Responsive */
@@ -371,16 +311,17 @@
             }
 
             h1 {
-                font-size: 2.5em;
+                font-size: 3em;
             }
 
-            .subtitle {
-                font-size: 0.9em;
-                letter-spacing: 2px;
+            .schedule-date {
+                min-width: 90px;
+                font-size: 1.1em;
+                padding-right: 16px;
             }
 
-            .schedule-grid {
-                grid-template-columns: 1fr;
+            .schedule-theme {
+                font-size: 1.2em;
             }
 
             .gallery-scroll {
@@ -408,17 +349,17 @@
         <div class="container">
             <div class="about-content">
                 <div class="section-label">About</div>
-                <p>
+                <p class="drop-cap">
                     Dorm Lectures is a place for ideas we don't otherwise have a space to consider. Each Sunday night we bring two students to a dorm on campus to talk for 15 minutes about an idea they care about. 
                 
                     <p> We believe that when the only context we have for engaging with ideas is a formal, strict, academic one – where we think for assignments and write for grades – we've lost the life of the mind. We're therefore interested in ideas at their most alive: ideas before they've been pinned down and bound into a rigid form, when they're still unpredictable, even dangerous. We encourage lectures that are experimental and theses that are unpolished. Above all, Dorm Lectures is a place to think together.
                     </p>
 
                     <p>
-                        Over the course of more than 50 lectures, we've had the pleasure of hearing about an incredible diversity of topics, among them lost classics, chip fabrication, philosophy of science, biomimicry, Stanford's architecture, constitutional law, AI explainability, and sufi mysticism. And we look forward to hearing yours :)
+                        Over the course of more than 70 lectures, we've had the pleasure of hearing about an incredible diversity of topics, among them lost classics, chip fabrication, philosophy of science, biomimicry, Stanford's architecture, constitutional law, AI explainability, and sufi mysticism. We look forward to hearing yours! :)
                     </p>
 
-                    <i>- LG, AG, and PB <br> November 2025</i>
+                    <i>- The Dorm Lectures team</i>
                     <br>                    <br>
 
 
@@ -427,100 +368,78 @@
         </div>
     </section>
 
+    <div class="divider">&#10045; &#10045; &#10045;</div>
+
+    <section class="gallery">
+        <div class="gallery-scroll">
+            <div class="gallery-item"><img class="gallery-scroll-img" src="assets/shriram.png"></div>
+            <div class="gallery-item"><img class="gallery-scroll-img" src="assets/branner.png"></div>
+            <div class="gallery-item"><img class="gallery-scroll-img" src="assets/donner.png"></div>
+            <div class="gallery-item"><img class="gallery-scroll-img" src="assets/soto.png"></div>
+            <div class="gallery-item"><img class="gallery-scroll-img" src="assets/sabineshouse.png"></div>
+            <div class="gallery-item"><img class="gallery-scroll-img" src="assets/castano.JPG"></div>
+            <div class="gallery-item"><img class="gallery-scroll-img" src="assets/evgr.png"></div>
+        </div>
+    </section>
+
+    <div class="divider">&#10045; &#10045; &#10045;</div>
+
     <section class="schedule">
         <div class="container">
-            <div class="section-label">Fall Quarter 2025</div>
+            <div class="schedule-header">Spring Themes Announced</div>
 
-            <div class="schedule-grid">
-                <div class="week-card past">
-                    <div class="week-number">Week 1</div>
-                    <div class="week-theme">Origins</div>
-                    <div class="speakers">
-                        <!--div class="speaker">
-                            <strong>
-                            Ailon Goraly
-                            </strong> 
-                            on living forever
-                        </div-->
-                        
-                        <div class="speaker"> Speakers TBA </div>
-                    </div>
+            <div class="schedule-list">
+                <div class="schedule-item">
+                    <div class="schedule-date">April 5</div>
+                    <div class="schedule-theme">War &amp; Peace</div>
                 </div>
-
-                <div class="week-card past">
-                    <div class="week-number">Week 2</div>
-                    <div class="week-theme">Righteousness</div>
-                    <div class="speakers">
-                        <div class="speaker"> Speakers TBA </div>
-                    </div>
+                <div class="schedule-item">
+                    <div class="schedule-date">April 12</div>
+                    <div class="schedule-theme">Crime &amp; Punishment</div>
                 </div>
-
-                <div class="week-card past">
-                    <div class="week-number">Week 3</div>
-                    <div class="week-theme">Difference</div>
-                    <div class="speakers">
-                        <div class="speaker"> Speakers TBA </div>
-                    </div>
+                <div class="schedule-item">
+                    <div class="schedule-date">April 19</div>
+                    <div class="schedule-theme">Frankenstein</div>
                 </div>
-
-                <div class="week-card past">
-                    <div class="week-number">Week 4</div>
-                    <div class="week-theme">Language</div>
-                    <div class="speakers">
-                        <div class="speaker"> Speakers TBA </div>
-                    </div>
+                <div class="schedule-item">
+                    <div class="schedule-date">April 26</div>
+                    <div class="schedule-theme">Pride &amp; Prejudice</div>
                 </div>
-
-                <div class="week-card past">
-                    <div class="week-number">Week 5</div>
-                    <div class="week-theme">Comfort</div>
-                    <div class="speakers">
-                        <div class="speaker"> Speakers TBA </div>
-                    </div>
+                <div class="schedule-item">
+                    <div class="schedule-date">May 3</div>
+                    <div class="schedule-theme">Madame Bovary</div>
                 </div>
-
-                <div class="week-card past">
-                    <div class="week-number">Week 6</div>
-                    <div class="week-theme">Violence</div>
-                    <div class="speakers">
-                        <div class="speaker"> Speakers TBA </div>
-                    </div>
+                <div class="schedule-item">
+                    <div class="schedule-date">May 10</div>
+                    <div class="schedule-theme">Sense &amp; Sensibility</div>
                 </div>
-
-                <div class="week-card past">
-                    <div class="week-number">Week 7</div>
-                    <div class="week-theme">The Erotic</div>
-                    <div class="speakers">
-                        <div class="speaker"> Speakers TBA </div>
-                    </div>
-                    </div>
-
-                <div class="week-card past">
-                    <div class="week-number">Week 8</div>
-                    <div class="week-theme">Control</div>
-                    <div class="speakers">
-                        <div class="speaker"> Speakers TBA </div>
-                    </div>
+                <div class="schedule-item">
+                    <div class="schedule-date">May 17</div>
+                    <div class="schedule-theme">Venus in Furs</div>
                 </div>
-
-                <div class="week-card past ">
-                    <div class="week-number">Week 9</div>
-                    <div class="week-theme">Whimsy</div>
-                    <div class="speakers">
-                        <div class="speaker"> Speakers TBA </div>
-                    </div>
+                <div class="schedule-item">
+                    <div class="schedule-date">May 24</div>
+                    <div class="schedule-theme">The Trial</div>
                 </div>
-
-                <div class="week-card">
-                    <div class="week-number">Week 10</div>
-                    <div class="week-theme">Mystery</div>
-                    <div class="speakers">
-                        <div class="speaker"> Speakers TBA </div>
-                    </div>
+                <div class="schedule-item">
+                    <div class="schedule-date">May 31</div>
+                    <div class="schedule-theme">The Great Gatsby</div>
                 </div>
+                <div class="schedule-item">
+                    <div class="schedule-date">June 7</div>
+                    <div class="schedule-theme">The Time Machine</div>
+                </div>
+            </div>
+
+            <div class="schedule-note">
+                Lectures delivered weekly by students. Themes are evocative phrases<br>
+                to get you thinking; actual lecture subjects range from philosophy to<br>
+                semiconductor manufacturing to archaeology.
             </div>
         </div>
     </section>
+
+    <div class="divider">&#10045; &#10045; &#10045;</div>
 
     <section class="faq">
         <div class="container">
@@ -598,24 +517,9 @@
         </div>
     </section>
 
-    <section class="gallery">
-        <div class="container">
-            <div class="section-label">Previous Lectures</div>
-        </div>
-        <div class="gallery-scroll">
-            <div class="gallery-item"><img class="gallery-scroll-img" src="assets/shriram.png"></div>
-            <div class="gallery-item"><img class="gallery-scroll-img" src="assets/branner.png"></div>
-            <div class="gallery-item"><img class="gallery-scroll-img" src="assets/donner.png"></div>
-            <div class="gallery-item"><img class="gallery-scroll-img" src="assets/soto.png"></div>
-            <div class="gallery-item"><img class="gallery-scroll-img" src="assets/sabineshouse.png"></div>
-            <div class="gallery-item"><img class="gallery-scroll-img"  src="assets/castano.JPG"></div>
-            <div class="gallery-item"><img class="gallery-scroll-img"  src="assets/evgr.png"></div>
-        </div>
-    </section>
-
     <footer>
         <div class="container">
-            <p>Stanford Dorm Lectures · Fall 2025</p>
+            <p>Stanford Dorm Lectures · Spring 2026</p>
             <p>Contact at any of <a href="mailto:ailon@stanford.edu">ailon@stanford.edu</a>, <a href="mailto:pbenn@stanford.edu">pbenn@stanford.edu</a>, <a href="mailto:gravesl@stanford.edu">gravesl@stanford.edu</a></p>
         </div>
     </footer>
